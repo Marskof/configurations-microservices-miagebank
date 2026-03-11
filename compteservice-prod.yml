@@ -15,7 +15,11 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka/
-
+  instance:
+    metadata-map:
+      prometheus.scrape: "true"
+      prometheus.path: "/actuator/prometheus"
+      prometheus.port: "${server.port}"
 
 management:
   endpoints:
@@ -23,12 +27,7 @@ management:
       exposure:
         include: "*"
 
-eureka:
-  instance:
-    metadata-map:
-      prometheus.scrape: "true"
-      prometheus.path: "/actuator/prometheus"
-      prometheus.port: "${server.port}"
+
       
 spring:
   cloud: 
