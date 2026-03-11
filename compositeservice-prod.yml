@@ -1,5 +1,7 @@
 server:
   port: 46230
+  error:
+    include-message: always
 
 eureka:
   instance:
