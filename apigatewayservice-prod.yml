@@ -1,0 +1,21 @@
+server:
+  port: 8080 
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: route-comptes
+          uri: lb://COMPTESERVICE 
+          predicates:
+            - Path=/api/compte/**
+
+        - id: route-clients
+          uri: lb://CLIENTSERVICE
+          predicates:
+            - Path=/api/clients/** 
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
